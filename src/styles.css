@@ -1,0 +1,41 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+:root{
+    --main-color: rgb(224, 224, 224);
+}
+
+header{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 1rem;
+    background-color: rgb(224, 224, 224);
+}
+
+img{
+    height: 50px;
+}
+
+.main-content{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    padding: 15px;
+}
+
+.add-project{
+    margin-top: 5px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    outline: none;
+    border: none;
+}
+
+.add-project:hover {
+    cursor: pointer;
+    background-color: var(--main-color);
+}
