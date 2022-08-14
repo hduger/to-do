@@ -88,6 +88,10 @@ header{
     margin: 10px 0px
 }
 
+.project-popup-input::placeholder{
+    color: var(--letter-color);
+}
+
 .project-popup-btns {
     display: flex;
     justify-content: space-between;
@@ -143,6 +147,26 @@ footer{
     justify-content: space-between;
     background-color: var(--secondary-color);
     align-items: center;
+    padding: 20px;
+}
+
+.list-title, .task-count{
+    color: var(--letter-color);
+} 
+
+.tasks{
+    background-color: var(--main-color);
+}
+
+.individual-task{
+    display: flex;
+    color: var(--letter-color);
+    padding: 1rem;
+    gap: 10px;
+}
+
+input[type="checkbox"]{
+    accent-color: var(--secondary-color);
 }
 
 /* ----------TASK CONTAINER STYLING END---------- */

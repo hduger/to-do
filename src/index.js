@@ -1,4 +1,4 @@
-import addProject, { cancel, render, createList, highlight, deleteProject } from  './project'
+import addProject, { cancel, render, createList, highlight, deleteProject, renderLists } from  './project'
 
 const deleteList = document.querySelector('[data-delete-btn]');
 
