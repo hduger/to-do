@@ -6,7 +6,11 @@
 }
 
 :root{
-    --main-color: rgb(224, 224, 224);
+    --main-color: #2C3333;
+    --secondary-color: #395B64;
+    --body-color: #A5C9CA;
+    --letter-color: #E7F6F2;
+
 }
 
 header{
@@ -14,28 +18,131 @@ header{
     align-items: center;
     gap: 15px;
     padding: 1rem;
-    background-color: rgb(224, 224, 224);
+    background-color: var(--main-color);
+    height: 10vh;
+    color: var(--letter-color);
 }
 
-img{
-    height: 50px;
-}
 
 .main-content{
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 6fr;
+    min-height: 80vh;
+    background-color: var(--body-color);
+    /* padding: 15px; */
+}
+
+
+.side-bar{
+    background-color: var(--secondary-color);
     padding: 15px;
 }
 
-.add-project{
-    margin-top: 5px;
-    padding: 5px 10px;
-    border-radius: 7px;
-    outline: none;
-    border: none;
+.side-bar > h2{
+    color: var(--main-color);
+    text-shadow: 2px 2px 2px var(--letter-color);
 }
 
-.add-project:hover {
-    cursor: pointer;
-    background-color: var(--main-color);
+.project-list > div{
+    text-decoration: none;
+    list-style: none;
+    font-size: 22px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
 }
+
+.project-name{
+    list-style: none;
+    color: white;
+}
+
+.active-list{
+    font-weight: 900;
+    text-shadow: 1px 1px 1px;
+}
+
+
+
+/* ----------PROJECT FORM STYLING START---------- */
+.proj-form {
+    align-items: center;
+    background-color: var(--main-color);
+    padding: 10px;
+    margin: 8px 0px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 4px  var(--body-color);
+
+}
+
+
+
+.project-popup-input{
+    background-color: var(--secondary-color);
+    color: var(--letter-color);
+    width: 100%;
+    padding: 8px;
+    border-radius: 7px;
+    border: none;
+    margin: 10px 0px
+}
+
+.project-popup-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add, .cancel {
+    background-color: var(--main-color);
+    padding: .25rem;
+    border-radius: 5px;
+    border: inset;
+    border-color: var(--secondary-color);
+    color: var(--letter-color);
+}
+
+.add:hover{
+    cursor: pointer;
+    background-color: aquamarine;
+}
+
+.cancel:hover{
+    cursor: pointer;
+    background-color: rgb(238, 89, 89);
+}
+
+
+
+
+/* ----------PROJECT FORM STYLING END---------- */
+
+/* ----------PROJECT FOOTER STYLING START---------- */
+
+footer{
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+    color: var(--letter-color);
+}
+
+/* ----------PROJECT FOOTER STYLING END---------- */
+
+/* ----------TASK CONTAINER STYLING START---------- */
+
+.task-list-container{
+    width: 60%;
+    margin: 0 auto;
+    /* text-align: center; */
+}
+
+.list-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--secondary-color);
+    align-items: center;
+}
+
+/* ----------TASK CONTAINER STYLING END---------- */
