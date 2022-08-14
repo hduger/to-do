@@ -5,15 +5,28 @@ let projectList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || []
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
 const listContainer = document.querySelector('[data-project-list]');
 const taskContainer = document.querySelector('[data-task-list-container]');
-const tasks = document.querySelector('[data-tasks]');
+const taskInd = document.querySelector('[data-tasks]');
 const taskCount = document.querySelector('[data-task-count]');
 const listTitle = document.querySelector('[data-list-title]');
 const taskTemplate = document.getElementById('task-template');
+const newTaskForm = document.querySelector('[data-task-form]')
+const submitTask = document.querySelector('[data-submit-task]')
+const clearCompletedTasksBtn = document.querySelector('[data-completed-tasks-btn]')
 
 export function highlight(e){
     if(e.target.tagName.toLowerCase()=== 'li'){
         selectedListId= e.target.dataset.listId;
         renderAndSave();
+    }
+}
+
+export function taskHighlight(e){
+    if(e.target.tagName.toLowerCase() === 'input'){
+        const selectedList = projectList.find(list => list.id===selectedListId)
+        const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
+        selectedTask.complete = e.target.checked
+        save()
+        renderTaskCount(selectedList)
     }
 }
 
@@ -33,12 +46,31 @@ export default function addProject(){
 
 }
 
+export function addTask(e){
+    e.preventDefault()
+    const newTaskInput = document.querySelector('[data-task-input]')
+    const taskName = newTaskInput.value;
+    if(taskName == null || taskName === "") return
+    const task = createTask(taskName)
+    newTaskInput.value = null
+
+    const selectedList = projectList.find(list => list.id === selectedListId)
+
+    selectedList.tasks.push(task);
+    renderAndSave();
+
+    console.log('click')
+}
+
+
+
+
 export function createList(name){
-    return {id: Date.now().toString(), name: name, tasks: [{
-        id: 'sdhsd',
-        name: 'TEST',
-        complete: false
-    }] }
+    return {id: Date.now().toString(), name: name, tasks: [] }
+}
+
+export function createTask(name){
+    return {id: Date.now().toString(), name: name, complete: false }
 }
 
 export function cancel(){
@@ -68,7 +100,7 @@ export function render(){
         taskContainer.style.display = ''
         listTitle.innerText = selectedList.name
         renderTaskCount(selectedList)
-        clearList(tasks);
+        clearList(taskInd);
         renderTasks(selectedList)
     }
     
@@ -83,12 +115,12 @@ export function renderTasks(selectedList){
         const label = taskEl.querySelector('label')
         label.htmlFor = task.id;
         label.append(task.name);
-        tasks.appendChild(taskEl);
+        taskInd.appendChild(taskEl);
     })
 }
 
 export function renderTaskCount(selectedList) {
-    const incompleteTasks = selectedList.tasks.filter(task => !task.incomplete).length;
+    const incompleteTasks = selectedList.tasks.filter(task => !task.complete).length;
     const taskString = incompleteTasks === 1 ? "task" : "tasks";
     taskCount.innerText = `${incompleteTasks} ${taskString} remaining`
 }
@@ -116,4 +148,10 @@ export function deleteProject(){
     projectList = projectList.filter(list => list.id !== selectedListId)
     selectedListId = null;
     renderAndSave();
+}
+
+export function clearTasks(){
+    const selectedList = projectList.find(list => list.id === selectedListId)
+    selectedList.tasks = selectedList.tasks.filter(task => !task.complete)
+    renderAndSave()
 }

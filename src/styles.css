@@ -56,6 +56,7 @@ header{
 .project-name{
     list-style: none;
     color: white;
+    margin-top: 8px;
 }
 
 .active-list{
@@ -168,5 +169,53 @@ footer{
 input[type="checkbox"]{
     accent-color: var(--secondary-color);
 }
+
+.task-input-container{
+    background-color: var(--main-color);
+    padding: 10px 20px 10px 10px;
+}
+
+.task-input-container > form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ .submit-task{
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    color: var(--letter-color);
+    padding: 5px;
+ }
+
+ .submit-task:hover{
+    cursor: pointer;
+    color: var(--body-color);
+
+ }
+
+.buttons{
+    display: flex;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.complete-tasks, .delete-btn{
+    padding: 5px;
+    border-radius: 8px;
+    border: none;
+    color: var(--letter-color);
+    background-color: var(--main-color);
+}
+
+.complete-tasks:hover, .delete-btn:hover{
+    cursor: pointer;
+    background-color: var(--body-color);
+    color: var(--main-color);
+}
+
+
 
 /* ----------TASK CONTAINER STYLING END---------- */
